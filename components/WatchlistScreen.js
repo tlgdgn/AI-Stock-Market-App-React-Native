@@ -1,11 +1,10 @@
-// WatchlistScreen.js
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const WatchlistScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Your Watchlist!</Text>
+      <Text style={styles.text}>Your Watchlist</Text>
     </View>
   );
 };
@@ -18,8 +17,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   text: {
+    fontSize: 24,
     color: 'white',
-    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
 

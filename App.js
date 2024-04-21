@@ -1,9 +1,8 @@
-// App.js
-
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'react-native';
+import { Image } from 'react-native'; // Import Image component
 
 import HomeScreen from './components/HomeScreen';
 import WatchlistScreen from './components/WatchlistScreen';
@@ -17,12 +16,31 @@ const App = () => {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarStyle: { backgroundColor: 'black' },
-          tabBarLabelStyle: { fontSize: 16, fontWeight: 'bold' },
+          tabBarLabelStyle: { fontSize: 12, fontWeight: 'normal' },
           tabBarInactiveTintColor: 'gray',
           tabBarActiveTintColor: 'white',
           tabBarIcon: ({ color }) => {
-            // You can customize icons here if needed
-            return null;
+            // Customize icons based on route name
+            if (route.name === 'Home') {
+              return (
+                <Image
+                  source={require('./homeicon.png')} // Replace with your actual icon path
+                  style={{ width: 24, height: 24 }} // Adjust size as needed
+                  resizeMode="contain"
+                  tintColor={color}
+                />
+              );
+            } else if (route.name === 'Watchlist') {
+              return (
+                <Image
+                  source={require('./savedicon.png')} // Replace with your actual icon path
+                  style={{ width: 24, height: 24 }} // Adjust size as needed
+                  resizeMode="contain"
+                  tintColor={color}
+                />
+              );
+            }
+            return null; // Default case
           },
           headerShown: false,
         })}
