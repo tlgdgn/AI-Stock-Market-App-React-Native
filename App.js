@@ -20,12 +20,11 @@ const App = () => {
           tabBarInactiveTintColor: 'gray',
           tabBarActiveTintColor: 'white',
           tabBarIcon: ({ color }) => {
-            // Customize icons based on route name
             if (route.name === 'Home') {
               return (
                 <Image
-                  source={require('./homeicon.png')} // Replace with your actual icon path
-                  style={{ width: 24, height: 24 }} // Adjust size as needed
+                  source={require('./homeicon.png')}
+                  style={{ width: 24, height: 24 }}
                   resizeMode="contain"
                   tintColor={color}
                 />
@@ -33,14 +32,14 @@ const App = () => {
             } else if (route.name === 'Watchlist') {
               return (
                 <Image
-                  source={require('./savedicon.png')} // Replace with your actual icon path
-                  style={{ width: 24, height: 24 }} // Adjust size as needed
+                  source={require('./savedicon.png')}
+                  style={{ width: 24, height: 24 }}
                   resizeMode="contain"
                   tintColor={color}
                 />
               );
             }
-            return null; // Default case
+            return null;
           },
           headerShown: false,
         })}
