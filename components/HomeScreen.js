@@ -1,6 +1,46 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import SearchBar from './SearchBar';
+import Stocks from './Stocks';
+
+import axios from 'axios';
+
+const stockData = [];
+
+const cheerio = require('cheerio');
+const axiosapi = require('axios');
+
+async function scrapeWebsite() {
+    try {
+        const response = await axios.get('https://www.getmidas.com/canli-borsa/xu100-bist-100-hisseleri');
+        const html = response.data;
+        const $ = cheerio.load(html);
+
+      for (let i = 1; i <= 30; i++) {
+        const selectorName = `body > div.container-fluid.stocks-page.stock-based-page > div > div > div > div.row.my-3.m-0.stock-table-container > table > tbody > tr:nth-child(${i}) > td.val.first > a`;
+        const scrapedTextName = $(selectorName).text().trim();
+
+        const selectorBid = `body > div.container-fluid.stocks-page.stock-based-page > div > div > div > div.row.my-3.m-0.stock-table-container > table > tbody > tr:nth-child(${i}) > td:nth-child(2)`;
+        const scrapedTextBid = $(selectorBid).text().trim();
+
+        const selectorChange = `body > div.container-fluid.stocks-page.stock-based-page > div > div > div > div.row.my-3.m-0.stock-table-container > table > tbody > tr:nth-child(${i}) > td.val.dailyChangePercent`;
+        const scrapedTextChange = $(selectorChange).text().trim();
+
+        console.log(`Sirket ${i}:`, scrapedTextName, 'Fiyat:', '₺'+scrapedTextBid, 'Degisim:', scrapedTextChange);
+
+        const stockInfo = {
+          company: scrapedTextName,
+          bidPrice: scrapedTextBid,
+          dailyChange: scrapedTextChange,
+        };
+      
+        stockData.push(stockInfo);
+        }
+      //console.log('StockData:', stockData);
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+    }
+}
 
 const HomeScreen = () => {
   return (
@@ -9,21 +49,16 @@ const HomeScreen = () => {
         <Text style={styles.header}>Available Stocks</Text>
 
       <ScrollView contentContainerStyle={styles.stockList}>
-        {/* Sample temporary stock items */}
-        <StockItem symbol="AKBNK" name="Akbank T.A.Ş." price="₺62.50" />
-        <StockItem symbol="ALARK" name="Alarko Holding A.Ş." price="₺119.20" />
-        <StockItem symbol="ASELS" name="Aselsan Elektronik Sanayi ve Ticaret A.Ş." price="₺58.70" />
-        <StockItem symbol="ASTOR" name="Astor Enerji A.Ş." price="₺95.00" />
-        <StockItem symbol="BIMAS" name="BİM Birleşik Mağazalar A.Ş." price="₺371.50" />
-        <StockItem symbol="BRSAN" name="Borusan Mannesmann Boru Sanayi ve Ticaret A.S" price="₺598.50" />
-        <StockItem symbol="EKGYO" name="Emlak Konut Gayrimenkul Yatırım Ortaklığı A.Ş." price="₺8.96" />
-        <StockItem symbol="ENKAI" name="Enka İnşaat ve Sanayi A.Ş." price="₺35.60" />
-        <StockItem symbol="EREGL" name="Ereğli Demir Çelik Fabrikaları T.A.Ş." price="₺41.22" />
-        <StockItem symbol="FROTO" name="Ford Otomotiv Sanayi A.Ş." price="₺1120.00" />
-        <StockItem symbol="GARAN" name="Türkiye Garanti Bankası A.Ş." price="₺78.70" />
-        <StockItem symbol="GUBRF" name="Gübre Fabrikaları T.A.Ş." price="₺154.20" />
-        <StockItem symbol="HEKTS" name="Hektaş Ticaret T.A.Ş." price="₺15.37" />
-        <StockItem symbol="ISCTR" name="Türkiye İş Bankası A.Ş. (C)" price="₺12.86" />
+
+        {stockData.map((stockInfo, index) => (
+        <Stocks
+          key={index}
+          company={stockInfo.company}
+          bidPrice={stockInfo.bidPrice}
+          dailyChange={stockInfo.dailyChange}
+          />
+        ))}
+
       </ScrollView>
     </View>
   );
@@ -72,4 +107,5 @@ const styles = StyleSheet.create({
   },
 });
 
+scrapeWebsite();
 export default HomeScreen;
