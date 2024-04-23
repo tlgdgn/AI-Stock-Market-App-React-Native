@@ -4,19 +4,22 @@ import SearchBar from './SearchBar';
 import Stocks from './Stocks';
 
 import axios from 'axios';
+import { screensEnabled } from 'react-native-screens';
 
-const stockData = [];
+//const stockData = [];
 
 const cheerio = require('cheerio');
 const axiosapi = require('axios');
 
 async function scrapeWebsite() {
+    const HicFarkEtmez = [];
+
     try {
         const response = await axios.get('https://www.getmidas.com/canli-borsa/xu100-bist-100-hisseleri');
         const html = response.data;
         const $ = cheerio.load(html);
 
-      for (let i = 1; i <= 30; i++) {
+      for (let i = 1; i <= 100; i++) {
         const selectorName = `body > div.container-fluid.stocks-page.stock-based-page > div > div > div > div.row.my-3.m-0.stock-table-container > table > tbody > tr:nth-child(${i}) > td.val.first > a`;
         const scrapedTextName = $(selectorName).text().trim();
 
@@ -34,21 +37,25 @@ async function scrapeWebsite() {
           dailyChange: scrapedTextChange,
         };
       
-        stockData.push(stockInfo);
+        HicFarkEtmez.push(stockInfo);
         }
+        return HicFarkEtmez;
       //console.log('StockData:', stockData);
     } catch (error) {
         console.error('Error fetching data:', error.message);
     }
 }
 
-const HomeScreen = () => {
+const StockList = () => {
+  const [stockData, setStockData] = React.useState([]);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      setStockData(await scrapeWebsite());
+    }
+    fetchData();
+  }, []);
   return (
-    <View style={styles.container}>
-        <SearchBar />
-        <Text style={styles.header}>Available Stocks</Text>
-
-      <ScrollView contentContainerStyle={styles.stockList}>
+    <ScrollView contentContainerStyle={styles.stockList}>
 
         {stockData.map((stockInfo, index) => (
         <Stocks
@@ -60,6 +67,17 @@ const HomeScreen = () => {
         ))}
 
       </ScrollView>
+  );
+}
+
+const HomeScreen = () => {
+  return (
+    <View style={styles.container}>
+        <SearchBar />
+        <Text style={styles.header}>Available Stocks</Text>
+
+      <StockList />
+      
     </View>
   );
 };
@@ -107,5 +125,4 @@ const styles = StyleSheet.create({
   },
 });
 
-scrapeWebsite();
 export default HomeScreen;
