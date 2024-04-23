@@ -17,10 +17,12 @@ npm start
 
 A text UI will appear asking about the platform you like to start the project with.
 
+```bash
 i - run on iOS
 a - run on Android
 d - open Dev Menu
 r - reload app
+```
 
 If everything is set up correctly and the emulator is open, the app should run perfectly.
 
