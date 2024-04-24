@@ -6,6 +6,7 @@ import { Image } from 'react-native'; // Import Image component
 
 import HomeScreen from './components/HomeScreen';
 import WatchlistScreen from './components/WatchlistScreen';
+import ForexScreen from './components/ForexScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,6 +39,15 @@ const App = () => {
                   tintColor={color}
                 />
               );
+            } else if (route.name === 'Forex') {
+              return (
+                <Image
+                  source={require('./forexicon.png')}
+                  style={{ width: 24, height: 24 }}
+                  resizeMode="contain"
+                  tintColor={color}
+                />
+              );
             }
             return null;
           },
@@ -45,6 +55,7 @@ const App = () => {
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Forex" component={ForexScreen} />
         <Tab.Screen name="Watchlist" component={WatchlistScreen} />
       </Tab.Navigator>
     </NavigationContainer>

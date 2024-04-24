@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 
-const Stocks = ({ company, bidPrice, dailyChange }) => (
+const Stocks = ({ company, bidPrice, dailyChange, dailyChangeColor}) => (
   <View style={styles.stockItem}>
     <Text style={styles.stockSymbol}>{company}</Text>
     <Text style={styles.stockPrice}>{bidPrice}</Text>
-    <Text style={styles.stockBid}>{dailyChange}</Text>
+    <Text style={{ color: dailyChangeColor }}>{dailyChange}</Text>
   </View>
 );
 
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
   },
-  stockBid: {
+  dailyChangeColor: {
     fontSize: 16,
     color: 'white',
   },

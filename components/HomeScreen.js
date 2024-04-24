@@ -6,20 +6,18 @@ import Stocks from './Stocks';
 import axios from 'axios';
 import { screensEnabled } from 'react-native-screens';
 
-//const stockData = [];
-
 const cheerio = require('cheerio');
 const axiosapi = require('axios');
 
 async function scrapeWebsite() {
-    const HicFarkEtmez = [];
+    const NewStockData = [];
 
     try {
         const response = await axios.get('https://www.getmidas.com/canli-borsa/xu100-bist-100-hisseleri');
         const html = response.data;
         const $ = cheerio.load(html);
 
-      for (let i = 1; i <= 100; i++) {
+      for (let i = 1; i <= 30; i++) {
         const selectorName = `body > div.container-fluid.stocks-page.stock-based-page > div > div > div > div.row.my-3.m-0.stock-table-container > table > tbody > tr:nth-child(${i}) > td.val.first > a`;
         const scrapedTextName = $(selectorName).text().trim();
 
@@ -37,9 +35,9 @@ async function scrapeWebsite() {
           dailyChange: scrapedTextChange,
         };
       
-        HicFarkEtmez.push(stockInfo);
+        NewStockData.push(stockInfo);
         }
-        return HicFarkEtmez;
+        return NewStockData;
       //console.log('StockData:', stockData);
     } catch (error) {
         console.error('Error fetching data:', error.message);
@@ -54,6 +52,17 @@ const StockList = () => {
     }
     fetchData();
   }, []);
+
+  const getColor = (dailyChange) => {
+    if (dailyChange.startsWith('-')) {
+      return 'red';
+    } else if (dailyChange === '0,00%') {
+      return 'gray';
+    } else {
+      return 'green';
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.stockList}>
 
@@ -63,6 +72,7 @@ const StockList = () => {
           company={stockInfo.company}
           bidPrice={stockInfo.bidPrice}
           dailyChange={stockInfo.dailyChange}
+          dailyChangeColor={getColor(stockInfo.dailyChange)}
           />
         ))}
 
@@ -82,14 +92,6 @@ const HomeScreen = () => {
   );
 };
 
-const StockItem = ({ symbol, name, price }) => (
-  <View style={styles.stockItem}>
-    <Text style={styles.stockSymbol}>{symbol}</Text>
-    <Text style={styles.stockName}>{name}</Text>
-    <Text style={styles.stockPrice}>{price}</Text>
-  </View>
-);
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -104,11 +106,6 @@ const styles = StyleSheet.create({
   },
   stockList: {
     paddingBottom: 16,
-  },
-  stockItem: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'white',
-    paddingVertical: 8,
   },
   stockSymbol: {
     fontSize: 18,
