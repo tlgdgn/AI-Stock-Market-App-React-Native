@@ -30,15 +30,6 @@ const App = () => {
                   tintColor={color}
                 />
               );
-            } else if (route.name === 'Watchlist') {
-              return (
-                <Image
-                  source={require('./savedicon.png')}
-                  style={{ width: 24, height: 24 }}
-                  resizeMode="contain"
-                  tintColor={color}
-                />
-              );
             } else if (route.name === 'Forex') {
               return (
                 <Image
@@ -56,7 +47,6 @@ const App = () => {
       >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Forex" component={ForexScreen} />
-        <Tab.Screen name="Watchlist" component={WatchlistScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

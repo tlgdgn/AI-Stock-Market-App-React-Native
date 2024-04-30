@@ -1,31 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, img} from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 
-
-const Stocks = ({ company, bidPrice, dailyChange, dailyChangeColor}) => {
-  const images = `/Users/tolgadogan/Desktop/StockProject/components/LOGOS/${company}.png`;
-  
-  return(
-    <View style={styles.stockItem}>
-    <Image 
-      source={{uri: images}}
-      style={{ width: 45, height: 45 }}
-      resizeMode="contain"/>
+const Currencies = ({ company, bidPrice, dailyChange, dailyChangeColor}) => (
+  <View style={styles.stockItem}>
     <Text style={styles.stockSymbol}>{company}</Text>
     <Text style={styles.stockPrice}>{bidPrice}</Text>
     <Text style={{ color: dailyChangeColor }}>{dailyChange}</Text>
   </View>
-  )
-};
+);
 
 const styles = StyleSheet.create({
   stockItem: {
-    flexDirection:'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: 'white',
     paddingVertical: 8,
+    flexDirection:'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   stockSymbol: {
     fontSize: 18,
@@ -33,7 +24,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   stockPrice: {
-    fontSize: 16,
+    fontSize: 30,
     color: 'white',
   },
   dailyChangeColor: {
@@ -43,4 +34,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Stocks;
+export default Currencies;

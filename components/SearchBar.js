@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { Image } from 'react-native';
 
-const SearchBar = () => {
+const SearchBar = ({ onChangeText }) => {
   return (
     <View style={styles.searchBar}>
       <Image
@@ -14,9 +14,7 @@ const SearchBar = () => {
         placeholder="Search stocks..."
         placeholderTextColor="#ababab"
         style={styles.input}
-        onChangeText={(text) => {
-          console.log('User typed:', text);
-        }}
+        onChangeText={onChangeText}
         onSubmitEditing={() => {
           console.log('Search submitted');
         }}
