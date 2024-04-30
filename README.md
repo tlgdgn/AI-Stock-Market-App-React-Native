@@ -26,4 +26,12 @@ r - reload app
 
 If everything is set up correctly and the emulator is open, the app should run perfectly.
 
+Some In App ScreenShots:
+![1](https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/57823bf5-2267-4699-ac39-492fec360c93)
+![2](https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/943ad92b-3014-4f52-9982-04d9ba2b932e)
+![3](https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/1fe23f86-ee1c-4a7d-bd05-8afc3516125e)
+![4](https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/b43c5f32-1ec1-42ed-a26e-4ead9ac4dd2e)
+![5](https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/006eb595-94e6-4e02-97aa-9f04b550e75e)
+
+
 You can follow and read the official React Native documentation and troubleshooting page.
