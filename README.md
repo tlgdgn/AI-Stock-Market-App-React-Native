@@ -27,11 +27,12 @@ r - reload app
 If everything is set up correctly and the emulator is open, the app should run perfectly.
 
 Some In App ScreenShots:
-<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/57823bf5-2267-4699-ac39-492fec360c93" width="48">
-<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/943ad92b-3014-4f52-9982-04d9ba2b932e" width="48">
-<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/1fe23f86-ee1c-4a7d-bd05-8afc3516125e" width="48">
-<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/b43c5f32-1ec1-42ed-a26e-4ead9ac4dd2e" width="48">
-<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/006eb595-94e6-4e02-97aa-9f04b550e75e" width="48">
+
+<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/57823bf5-2267-4699-ac39-492fec360c93" width="160">
+<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/943ad92b-3014-4f52-9982-04d9ba2b932e" width="160">
+<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/1fe23f86-ee1c-4a7d-bd05-8afc3516125e" width="160">
+<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/b43c5f32-1ec1-42ed-a26e-4ead9ac4dd2e" width="160">
+<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/006eb595-94e6-4e02-97aa-9f04b550e75e" width="160">
 
 
 
