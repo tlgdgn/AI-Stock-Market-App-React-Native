@@ -33,6 +33,14 @@ Some In App ScreenShots:
 <img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/1fe23f86-ee1c-4a7d-bd05-8afc3516125e" width="160">
 <img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/b43c5f32-1ec1-42ed-a26e-4ead9ac4dd2e" width="160">
 <img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/006eb595-94e6-4e02-97aa-9f04b550e75e" width="160">
+<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/50d5a25d-4d8c-41fd-9464-dc5d8ae2d4d3" width="160">
+<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/5b42be21-4f62-4603-8569-a4d7a4535963" width="160">
+<img src="https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/10f2834d-23e5-48da-80fd-c389a54741d0" width="160">
+
+
+
+https://github.com/tlgdgn/Stock-Market-App-React-Native/assets/118059132/15390c65-79b1-4728-bcee-fe3122f44edb
+
 
 
 
